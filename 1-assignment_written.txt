@@ -1,0 +1,21 @@
+What Rails does:
+
+  ActiveModel:
+
+    ActiveModel is a library that provides methods that ActiveRecord depends on.  There are various tasks that ActiveRecord can perform, including, but not limited to, callbacks, serialization, and validation, that are not dependent on the database.  By abstracting non-database specific tasks into a separate module, these features can be made available to plain Ruby objects.  If, for some reason, one wanted to create a model that was not intended to persist in the database, but still wanted the full functionality of Rails models, then one could inherit the class from ActiveModel instead of ActiveRecord.  Then the model would have Rails-like functionality without database persistence (a tableless model).  It is perhaps important to emphasize, however, that ActiveRecord's functionality is highly dependent on ActiveModel, because the modules in the library were originally part of the ActiveRecord module.
+
+  ActiveRecord:
+
+    I do not think there is much need to belabor ActiveRecord too much after going through the Databases Checkpoints.  ActiveRecord is the ORM for Rails, which means that it is the interface through which Rails applications do CRUD in the database.
+
+  ActiveSupport:
+
+    ActiveSupport seems as if it is a lot like ActiveModel in that it is a group of utility methods and language extensions that were extracted from Rails.  Thus they can be used with plain Ruby objects.  ActiveSupport methods appear to be just that: support methods that make working on Rails' applications a simpler, more intuitive process.  ActiveModel methods seem concerned with making plain Ruby classes behave like Rails' models, while ActiveSupport methods seem concerned with providing Rails' utilities to plain Ruby objects.  But again, ActiveSupport is integral to Rails itself.  It was extracted into its own module because its methods have utility outside of Rails.
+
+  ActionPack:
+
+    Per the source, Action Pack provides the view and controller layers in the MVC paradigm. It uses ActionDispatch, a module that deals with http requests and routing, and ActionController, a module that has the controller base class.  While ActiveRecord is the interface between Rails and the database, ActionPack is the interface between ActiveRecord and the user.  It interprets requests, interacts with ActiveRecord models appropriately and passes the results to ActionView for rendering.
+
+  ActionMailer:
+
+    This is a module that provides a base class for creating mailer classes that allow Rails applications to send (and receive) emails.  It provides a library of methods designed to ease this task.
