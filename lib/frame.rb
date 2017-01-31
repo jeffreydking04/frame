@@ -1,4 +1,6 @@
 require "frame/version"
+require "frame/dependencies"
+require 'frame/controller'
 
 module Frame
   class Application
