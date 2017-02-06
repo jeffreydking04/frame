@@ -1,11 +1,14 @@
 module Frame
   class Application
     def controller_and_action(env)
-      _, controller, action, _ = env['PATH_INFO'].split('/', 4)
+      _, controller, action, id, _ = env['PATH_INFO'].split('/', 4)
       controller = controller.capitalize
       controller = "#{controller}Controller"
-
-      [Object.const_get(controller), action]
+      if id
+        [Object.const_get(controller), action, id]
+      else
+        [Object.const_get(controller), action]
+      end
     end
 
     def fav_icon(env)
