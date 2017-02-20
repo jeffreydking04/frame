@@ -39,6 +39,10 @@ module Frame
       response(create_response_array(*args))
     end
 
+    def redirect(*args)
+      response(create_response_array(*args))
+    end    
+
     def get_response
       @response
     end
